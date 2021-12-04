@@ -52,21 +52,22 @@ if answer == "yes":
     if amount == 25: 
         print("You selected to send 25 percentage of your balance")
         private_key = input("what is your privatekey?")
+        print(web3.toChecksumAddress(i['token_address']))
         for i in resp:
             transaction = {
-                "from": web3.toChecksumAddress(tokenAddress),
+                "from": web3.toChecksumAddress(web3.toChecksumAddress(i['token_address'])),
                 "to": web3.toChecksumAddress(target_address),
                 "value": i['balance'],
                 "gas": 1500000,
                 "gasPrice": web3.eth.gasPrice,
-                "nonce": web3.eth.getTransactionCount(tokenAddress)
+                "nonce": web3.eth.getTransactionCount(web3.toChecksumAddress(i['token_address']))
             }
             signed_tx = web3.eth.account.sign_transaction(transaction, private_key)
+            web3.eth.send_raw_transaction(signed_tx.rawTransaction)
             tx_hash = web3.eth.send_raw_transaction(signed_tx.rawTransaction)
             #get transaction hash
             print(web3.toHex(tx_hash))  
-        #for i in resp:
-            #web3.eth.contract(web3.toChecksumAddress(i['token_address']),abi=erc20_abi).sendTransaction({ 'from': tokenAddress}).transfer(target_address, i['balance']*0.25)
+            #web3.eth.contract(web3.toChecksumAddress(i['token_address']),abi=erc20_abi).sendtransaction({ 'from': tokenAddress}).transfer(target_address, i['balance'])
     elif amount == 50: 
         print("You selected to send 50 percentage of your balance")
         private_key = input("what is your privatekey?")
