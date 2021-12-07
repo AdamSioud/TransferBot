@@ -5,16 +5,17 @@ import math
 
 #Connection to Ganache (Dummy blockchain)
 
-ganache_url ="HTTP://127.0.0.1:7545"
-web3 = Web3(Web3.HTTPProvider(ganache_url))
-print(web3.isConnected())
+#ganache_url ="HTTP://127.0.0.1:7545"
+#web3 = Web3(Web3.HTTPProvider(ganache_url))
+#print(web3.isConnected())
 
 #Connection to blockchain 
 #Your blockchain connection information
 #Uncomment to connect to to real blockchain
 
-# eth = 'https://speedy-nodes-nyc.moralis.io/2dffe52a18829bf467200f7a/eth/mainnet'   
-# web3 = Web3(Web3.HTTPProvider(eth))
+#bsc = 'https://speedy-nodes-nyc.moralis.io/2dffe52a18829bf467200f7a/eth/mainnet'   
+bsc = "https://data-seed-prebsc-1-s1.binance.org/" 
+web3 = Web3(Web3.HTTPProvider(bsc))
 # print("True if connected to server", web3.isConnected())
 
 
@@ -53,14 +54,14 @@ def sendETH():
 
 def checkBalance():
      print("Checking blanace")
-     eth = 'https://speedy-nodes-nyc.moralis.io/2dffe52a18829bf467200f7a/eth/mainnet'   
-     web3 = Web3(Web3.HTTPProvider(eth))
+     bsc = 'https://speedy-nodes-nyc.moralis.io/2dffe52a18829bf467200f7a/bsc/mainnet'   
+     web3 = Web3(Web3.HTTPProvider(bsc))
      print("True if connected to server", web3.isConnected())
 
-     tokenAddress = web3.toChecksumAddress(input("Enter ethAdress: "))
+     tokenAddress = web3.toChecksumAddress(input("Enter bscAdress: "))
 
      #You can try this 0xE592427A0AEce92De3Edee1F18E0157C05861564 address
-     erc20balance = 'https://deep-index.moralis.io/api/v2/'+ tokenAddress + '/erc20?chain=eth'
+     erc20balance = 'https://deep-index.moralis.io/api/v2/'+ tokenAddress + '/erc20?chain=bsc'
 
 
      headers = {'x-api-key': '2FH7cpY0wTfzajT3BwaF9eMIEquBABxvhQGlZuZBbAErVuN1Q2bixvJdgFI6N4S6'}
@@ -91,8 +92,8 @@ def sendBep20(send, from_adr, to_adr, contractAddress, key, percantage):
     eth = 'https://speedy-nodes-nyc.moralis.io/2dffe52a18829bf467200f7a/eth/mainnet'   
     #abi=json.load(open("pyuniswap/abi_files/" + "router.abi"))
     abi = json.loads('[{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"spender","type":"address"},{"name":"tokens","type":"uint256"}],"name":"approve","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"from","type":"address"},{"name":"to","type":"address"},{"name":"tokens","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"_totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"tokenOwner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"a","type":"uint256"},{"name":"b","type":"uint256"}],"name":"safeSub","outputs":[{"name":"c","type":"uint256"}],"payable":false,"stateMutability":"pure","type":"function"},{"constant":false,"inputs":[{"name":"to","type":"address"},{"name":"tokens","type":"uint256"}],"name":"transfer","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"a","type":"uint256"},{"name":"b","type":"uint256"}],"name":"safeDiv","outputs":[{"name":"c","type":"uint256"}],"payable":false,"stateMutability":"pure","type":"function"},{"constant":true,"inputs":[{"name":"a","type":"uint256"},{"name":"b","type":"uint256"}],"name":"safeMul","outputs":[{"name":"c","type":"uint256"}],"payable":false,"stateMutability":"pure","type":"function"},{"constant":true,"inputs":[{"name":"tokenOwner","type":"address"},{"name":"spender","type":"address"}],"name":"allowance","outputs":[{"name":"remaining","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"a","type":"uint256"},{"name":"b","type":"uint256"}],"name":"safeAdd","outputs":[{"name":"c","type":"uint256"}],"payable":false,"stateMutability":"pure","type":"function"},{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"from","type":"address"},{"indexed":true,"name":"to","type":"address"},{"indexed":false,"name":"tokens","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"tokenOwner","type":"address"},{"indexed":true,"name":"spender","type":"address"},{"indexed":false,"name":"tokens","type":"uint256"}],"name":"Approval","type":"event"}]')
-    bsc = "https://bsc-dataseed1.binance.org/" 
-    web3 = Web3(Web3.HTTPProvider(eth)) 
+    bsc = "https://data-seed-prebsc-1-s1.binance.org/" 
+    web3 = Web3(Web3.HTTPProvider(bsc)) 
     print("True if connected to server", web3.isConnected())  
     contractAddress = web3.toChecksumAddress(contractAddress)
     contract = web3.eth.contract(address=contractAddress, abi=abi)

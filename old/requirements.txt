@@ -1,0 +1,4 @@
+web3==5.25.0
+python-binance
+numpy
+websocket_client
