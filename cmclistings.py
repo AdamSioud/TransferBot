@@ -1,17 +1,11 @@
-import json
-
-from pandas.core.base import PandasObject
 from web3 import Web3
-import asyncio
-import config
 import datetime
-
 import time
 from coinmarketcapapi import CoinMarketCapAPI, CoinMarketCapAPIError
-import pandas as pd
 from datetime import date, timedelta
 from time import gmtime, strftime
 from time import sleep
+from threading import Timer
 
 
 cmc = CoinMarketCapAPI('15d0e64b-c558-4c90-8ede-acf68ad38559')
@@ -53,22 +47,41 @@ for x in untrackedCoins:
 
 newtoken += 1
 
-for y in range(newtoken-7, newtoken+7):
-    try:        
-        infoNewCoin = checkCoinExist(id=y)
-        address  = infoNewCoin.data[str(y)]["platform"]['token_address']
-        name = infoNewCoin.data[str(y)]["name"]
-        id = infoNewCoin.data[str(y)]["id"]
-        #print(checkCoinExist(id=y))
-        #print(infoNewCoin.data[str(y)]["date_added"])
-        #dateadded  = infoNewCoin.data[str(y)]['data_added']
-        #print("first information", name, id, address)
-        #print("Second information", infoNewCoin.data[str(y)])
-        if infoNewCoin.data[str(y)]["date_added"] == "2021-12-07T10:06:58.000Z":
-            thisvalue = (checkCoinExist(id=y))
-    except:
-        continue
-print("We did it!!!!!!!!", thisvalue)
+#while True:
+    #print(checkCoinExist(id=y))
+
+#time.sleep(1 - ((time.time()) % 1))
+def getCoin():
+    matchDate = (str(datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S.')))
+    newTime = matchDate + "000Z"
+    print(newTime)
+
+    for x in range(newtoken, newtoken+5):
+        print(x)
+        try:        
+            infoNewCoin = checkCoinExist(id=x)   
+            print(infoNewCoin.data[str(x)]["name"])          
+            if infoNewCoin.data[str(x)]["date_added"] == newTime:
+                print("We did it!!!!!!!!", infoNewCoin)
+            else:
+               print("notfound")
+        except:
+            continue
+while True:      
+    getCoin()
+    time.sleep(1)
+
+#address = infoNewCoin.data[str(y)]["platform"]['token_address']
+#name = infoNewCoin.data[str(y)]["name"]
+#id = infoNewCoin.data[str(y)]["id"]
+#print(checkCoinExist(id=y))
+#print(infoNewCoin.data[str(y)]["date_added"])
+#dateadded  = infoNewCoin.data[str(y)]['data_added']
+#print("first information", name, id, address)
+#print("Second information", infoNewCoin.data[str(y)])
+#print(checkCoinExist(id=y))  
+
+#print("We did it!!!!!!!!", thisvalue)
 #print(str(datetime.datetime.now()))
 #print(str(current))
 #print(checkCoinExist(address = "0x8f081eb884fd47b79536d28e2dd9d4886773f783"))
@@ -77,9 +90,7 @@ print("We did it!!!!!!!!", thisvalue)
 #print(untrackedCoins[0]["first_historical_data"])
 
 #starttime = time.time()
-#while True:
-   #print(str(datetime.datetime.now().isoformat()))
-   #time.sleep(1 - ((time.time()) % 1))
+
 
 
 
