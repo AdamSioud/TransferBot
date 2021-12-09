@@ -46,30 +46,37 @@ for x in untrackedCoins:
 #print(status1)
 
 newtoken += 1
-
+newnewtoken = str(newtoken + 1)
+newnewnewtoken =  str(newtoken + 2)
+stringtoken = str(newtoken + "," + newnewtoken + "," + newnewnewtoken)
+print(checkCoinExist(id=stringtoken))
 #while True:
     #print(checkCoinExist(id=y))
 
 #time.sleep(1 - ((time.time()) % 1))
+
+#Solution
+
 def getCoin():
     matchDate = (str(datetime.datetime.now().strftime('%Y-%m-%dT%H:%M:%S.')))
     newTime = matchDate + "000Z"
     print(newTime)
-
-    for x in range(newtoken, newtoken+5):
-        print(x)
-        try:        
-            infoNewCoin = checkCoinExist(id=x)   
-            print(infoNewCoin.data[str(x)]["name"])          
-            if infoNewCoin.data[str(x)]["date_added"] == newTime:
-                print("We did it!!!!!!!!", infoNewCoin)
-            else:
-               print("notfound")
+    for id in range(newtoken, newtoken+5):        
+        try:
+            #print(x) 
+            infoNewCoin = checkCoinExist(id=id)                   
+            print(infoNewCoin.data[str(id)]["name"])          
+            #if infoNewCoin.data[str(id)]["date_added"] == newTime:
+                #print("We did it!!!!!!!!", infoNewCoin)
+            #else:
+            print("notfound")
         except:
             continue
-while True:      
-    getCoin()
-    time.sleep(1)
+
+      
+#while True:      
+#    getCoin()
+#    time.sleep(1)
 
 #address = infoNewCoin.data[str(y)]["platform"]['token_address']
 #name = infoNewCoin.data[str(y)]["name"]
