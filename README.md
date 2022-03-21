@@ -3,7 +3,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="400" height="400">
+    <img src="images/logo.png" alt="Logo" width="250" height="250">
   </a>
 
 <h2 align="center"> CMC DETECTIVE</h2>
