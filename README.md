@@ -28,7 +28,7 @@ More fun things will be added soon to the application soon:)
 
 
 
-### Built With
+
 <!-- 
 * [Swift](https://nextjs.org/)
 * [Tatum.io](https://reactjs.org/)
