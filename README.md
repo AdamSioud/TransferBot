@@ -11,11 +11,6 @@
   <p align="center">
     CMC DETECTIVE
     <br />
-    <a href="https://github.com/AdamSioud/Minta"><strong>Do it now »</strong></a>
-     <br />
-      <a href="https://github.com/AdamSioud/MINTA-IOS-APP"><strong>Test me then »</strong></a>
-        <br />
-    <a href="https://www.youtube.com/watch?v=8Y1IvOnife8&list=RDMM&start_radio=1&rv=PzGFauqHF-U">Look at me</a>
   </p>
 </div>
 
