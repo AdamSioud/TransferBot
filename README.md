@@ -9,7 +9,6 @@
 <h2 align="center"> CMC DETECTIVE</h2>
 
   <p align="center">
-    CMC DETECTIVE
     <br />
   </p>
 </div>
